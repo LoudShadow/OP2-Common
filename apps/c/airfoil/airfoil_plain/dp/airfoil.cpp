@@ -123,7 +123,7 @@ int main(int argc, char **argv) {
       exit(-1);
     }
   }
-
+F
   for (int n = 0; n < nedge; n++) {
     if (fscanf(fp, "%d %d %d %d \n", &edge[2 * n], &edge[2 * n + 1],
                &ecell[2 * n], &ecell[2 * n + 1]) != 4) {

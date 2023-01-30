@@ -2,18 +2,18 @@ KAHIP_DEF ?= -DHAVE_KAHIP
 
 ifdef KAHIP_INSTALL_PATH
   KAHIP_INC_PATH := -I$(KAHIP_INSTALL_PATH)/include
-  KAHIP_LIB_PATH := -L$(KAHIP_INSTALL_PATH)/lib
+  KAHIP_LIB_PATH := -L$(KAHIP_INSTALL_PATH)/lib -L$(KAHIP_INSTALL_PATH)/lib/parallel
 endif
 
 KAHIP_TEST = $(CONFIG_MPICXX) $(KAHIP_INC_PATH) \
-                    $(DEPS_DIR)/tests/kahip.cpp $(KAHIP_LIB_PATH) $(KAHIP_LINK) \
+                    $(DEPS_DIR)/tests/kahip.cpp $(KAHIP_LIB_PATH) $(KAHIP_LIB_PATH2) $(KAHIP_LINK) \
                     -o $(DEPS_DIR)/tests/kahip
 
 $(file > $(DEP_BUILD_LOG),$(KAHIP_TEST))
 $(shell $(KAHIP_TEST) >> $(DEP_BUILD_LOG) 2>&1)
 
 ifneq ($(.SHELLSTATUS),0)
-  KAHIP_LINK ?= -lparhip_interface
+  KAHIP_LINK ?= -l:libkahip.so -l:libkahip.a -l:libparhip_interface.so
 
   $(file >> $(DEP_BUILD_LOG),$(KAHIP_TEST))
   $(shell $(KAHIP_TEST) >> $(DEP_BUILD_LOG) 2>&1)

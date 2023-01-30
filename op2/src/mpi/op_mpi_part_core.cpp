@@ -3831,7 +3831,7 @@ void perform_kway_partition(idxtype *vtxdist, idxtype *xadj, idxtype *adjncy,
  * Wrapper routine to partition a given set Using
  * ParHIPPartitionKWay or ParMETIS PartKway()
  *******************************************************************************/
-#ifdef HAVE_PARMETIS
+#ifdef HAVE_KAHIP
 template <class T>
 void op_partition_kway_generic(op_map primary_map, bool use_kahip) {
   // declare timers
