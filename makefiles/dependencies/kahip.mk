@@ -13,7 +13,7 @@ $(file > $(DEP_BUILD_LOG),$(KAHIP_TEST))
 $(shell $(KAHIP_TEST) >> $(DEP_BUILD_LOG) 2>&1)
 
 ifneq ($(.SHELLSTATUS),0)
-  KAHIP_LINK ?= -l:libkahip.so -l:libkahip.a -l:libparhip_interface.so
+  KAHIP_LINK ?= -l:libparhip_interface.so
 
   $(file >> $(DEP_BUILD_LOG),$(KAHIP_TEST))
   $(shell $(KAHIP_TEST) >> $(DEP_BUILD_LOG) 2>&1)
