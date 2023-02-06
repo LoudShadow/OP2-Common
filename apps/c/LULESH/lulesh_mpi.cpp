@@ -962,9 +962,9 @@ void initialise(int myRank,
    //! Setup Symmetry Planes Function !HERE
 
    for (int i = 0; i<m_numNode;++i){
-      t_symmX[i] |= FREE_NODE;
-      t_symmY[i] |= FREE_NODE;
-      t_symmZ[i] |= FREE_NODE;
+      t_symmX[i] = FREE_NODE;
+      t_symmY[i] = FREE_NODE;
+      t_symmZ[i] = FREE_NODE;
    }
 
    //new Version
